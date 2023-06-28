@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Messaging App</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+<style>
+#message-area {
+  height: 200px;
+  width: 400px;
+  border: 1px solid #000;
+  overflow: auto;
+}
+
+#message-input {
+  width: 300px;
+}
+
+#send-button {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+  <div id="message-area"></div>
+  <input type="text" id="message-input">
+  <button id="send-button">Send</button>
+
+  <script src="script.js">
+// Function to handle sending a message
+function sendMessage() {
+  var messageInput = document.getElementById("message-input");
+  var message = messageInput.value;
+
+  // Add the message to the message area
+  displayMessage(message);
+
+  // Clear the input field
+  messageInput.value = "";
+
+  // Send the message to the other user (you can implement the backend logic here)
+  // For demonstration purposes, we'll just log the message to the console
+  console.log("Message sent: " + message);
+}
+
+// Function to display a message in the message area
+function displayMessage(message) {
+  var messageArea = document.getElementById("message-area");
+  var messageElement = document.createElement("div");
+  messageElement.textContent = message;
+  messageArea.appendChild(messageElement);
+
+  // Scroll to the bottom of the message area
+  messageArea.scrollTop = messageArea.scrollHeight;
+}
+
+// Event listener for the send button
+var sendButton = document.getElementById("send-button");
+sendButton.addEventListener("click", sendMessage);
+
+</script>
+</body>
+</html>
